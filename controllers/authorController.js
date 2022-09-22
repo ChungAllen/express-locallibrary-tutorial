@@ -27,11 +27,9 @@ exports.author_detail = (req, res, next) => {
   async.parallel(
     {
       author(callback) {
-        console.log('findbyId')
         Author.findById(id).exec(callback);
       },
       authors_books(callback) {
-        console.log("authors books")
         Book.find({ author: id }, "title summary").exec(callback);
       },
     },
